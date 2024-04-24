@@ -1,0 +1,45 @@
+# this is the output that we need. Find out!
+#> caesar_cipher("What a string!", 5)
+#=> "Bmfy f xywnsl!"
+
+def caesar_cipher(string, shift_pos)
+  #create an empty array. all the modified string is going to be pushed into this new string
+  new_string = []
+  old_string = string.chars.map {|i|i.ord}
+
+  old_string.each do |i|
+    #Check whether string is uppercase
+    if i.between?(65,90)
+      x = i + shift_pos
+      #adds 26 to go back the uppercase cycle A-Z
+      if x < 65
+        y = x + 26
+        new_string.push(y)
+      #subtracts 26 to go back the uppercase cycle A-Z
+      elsif x > 90
+        y = x - 26
+        new_string.push(y)
+      else
+        new_string.push(x)
+      end
+    #Check whether string is lowercase
+    elsif i.between?(97,122)
+      x = i + shift_pos
+      if x < 97
+        y = x + 26
+        new_string.push(y)
+      elsif x > 122
+        y = x - 26
+        new_string.push(y)
+      else
+        new_string.push(x)
+      end
+    #Checks whether its a letter or not. If not, dont have to shift position.
+    else
+      new_string.push(i)
+    end
+  end
+  new_string.map {|c|c.chr}.join
+end
+
+p caesar_cipher("What a string!", 5)
