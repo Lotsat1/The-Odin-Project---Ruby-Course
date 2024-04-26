@@ -1,0 +1,22 @@
+dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","own","part","partner","sit"]
+
+def substrings(string, dictionary)
+  # change given string into downcase and separate into array by one space
+  string = string.downcase.split(" ")
+  # create empty hash
+  wut = Hash.new(0)
+
+  #first - iterate each string in dictionary
+  #second - iterate the given string and scan it whether any of it has similarities
+  #third - remove any empty arrays and use reduce method to calculate how many occurences the string has in z
+  dictionary.each do |i|
+    z = string.map { |one_element| one_element.scan(i) }
+    z.flatten.reduce(wut) {|ans, num| ans[num] += 1 ; ans}
+  end
+  wut
+end
+
+substrings("Howdy partner, sit down! How's it going?", dictionary)
+
+#substrings("Howdy partner, sit down! How's it going?", dictionary)
+#{ "down" => 1, "go" => 1, "going" => 1, "how" => 2, "howdy" => 1, "it" => 2, "i" => 3, "own" => 1, "part" => 1, "partner" => 1, "sit" => 1 }
