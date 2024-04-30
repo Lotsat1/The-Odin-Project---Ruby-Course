@@ -1,0 +1,30 @@
+#What is the best day to make profit?
+#You are given an array of days which is the price value.
+#[17,3,6,9,15,8,6,1,10] is the array.
+#You must create a programme where it knew when to buy when its the lowest and sell when its the highest.
+
+def stock_picker(profitcalc)
+  highestprofit = 0
+  daytobuy_daytosell = []
+  string = ''
+
+  profitcalc.each_with_index do |price1, day1|
+    profitcalc.each_with_index do |price2, day2|
+
+      earning = price2 - price1
+
+      if earning > highestprofit && day1 < day2
+        highestprofit = earning
+        daytobuy_daytosell = [day1, day2]
+        string = "The best day to buy is day #{day1} and the best day to sell is day #{day2} to make an earning of $#{earning}!"
+      end
+    end
+  end
+  p string
+  p daytobuy_daytosell
+  daytobuy_daytosell
+end
+
+stock_picker([17,3,6,9,15,8,6,1,10])
+
+# ==> [1, 4]
