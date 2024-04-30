@@ -1,0 +1,23 @@
+def bubble_sort(array)
+  temp = []
+  array = array
+
+  for i in array
+    array.each_with_index do |q,index|
+      if array[index+1] == nil
+        array[index] = array[index]
+        next
+      end
+
+      if q > array[index+1]
+          temp = array[index]
+          array[index] = array[index+1]
+          array[index+1] = temp
+      end
+    end
+  end
+  p "The answer is #{array}"
+  array
+end
+
+bubble_sort([4,3,78,2,0,2])
